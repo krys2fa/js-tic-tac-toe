@@ -1,5 +1,6 @@
 const boardDisplay = document.querySelector('.board-display');
 const cells = document.querySelectorAll('.cell');
-console.log(cells);
+const playerSym = document.querySelector('#symbol');
+const playerName = document.querySelector('#username');
 
-export { boardDisplay, cells };
+export { boardDisplay, cells, playerName, playerSym };
