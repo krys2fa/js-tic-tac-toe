@@ -1,3 +1,5 @@
 const boardDisplay = document.querySelector('.board-display');
+const cells = document.querySelectorAll('.cell');
+console.log(cells);
 
-export { boardDisplay };
+export { boardDisplay, cells };
