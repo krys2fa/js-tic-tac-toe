@@ -1,7 +1,7 @@
-import { boardDisplay, cells, playerName, playerSym } from './dom.js';
+import { boardDisplay, cells, playerName, playerSym, form } from './dom.js';
 
 let gameBoard = {
-   board: ['_', 'O', 'X', 'X', 'X', 'X', 'X', 'X', 'X']
+   board: ['', '', '', '', '', '', '', '', '']
 }
 
 console.log(gameBoard.board);
@@ -11,53 +11,63 @@ console.log(gameBoard.board);
 // // })();
 
 
-// const gameStart = () => {
-
-// }
+ const gameStart = () => {
+   
+ }
 
 const updateCell = ( gameBoard ) => {
-  // TODO: check whether cell is populated
   const {index} = event.target.dataset
-  console.log(index);
   let gameArr = gameBoard;
   const playerInput = index;
-  
+  console.log(event.target.dataset);
   gameArr[index-1] = 'O'
-  console.log(gameArr);
-  
+  render(cells, gameBoard, index);
 }
 
 
-// let player = (name, symbol) => {
-//   return { name, symbol };
-// };
+let player = (name, symbol) => {
+  return { name, symbol };
+};
 
-// const playerOne =  player(playerName.value, 'X')
-// const playerTwo =  player(playerName.value, 'O')
 
-// let gameFlow = () => {
+let createPlayer = (name, symbol) => {
+const playerOne =  player(name.value, symbol);
+// const playerTwo =  player(name.value, 'O')
+}
 
-// };
+let gameFlow = () => {
+  alert('Player One enter your name:');
+  createPlayer(playerName, 'X');
+  alert('Player Two enter your name:');
+  createPlayer(playerName, 'O');
 
-// const render = (game) => {
-//   game.map((gameValue, index) => {
-//     // if cell.index = game.index print symbol
-//     // const cell = document.createElement('div');
-//     // const newContent = document.createTextNode(gameValue);
-//     // cell.classList.add('cell', `cell${index+1}`);
-//     // cell.appendChild(newContent);
-//     // // document.body.insertBefore(cell, rightDiv);
-//     // boardDisplay.appendChild(cell);
-//   });
-//   // boardDisplay.innerHTML = `${game}`;
-//   return game;
-// };
+
+  gameBoard.board.forEach (element => {
+    if(element !== ''){
+      
+    }
+  })
+
+
+  // players take turn
+  // player input array
+  // wins combos
+  // 
+};
+
+gameFlow();
+
+const render = (cells, gameBoard, index) => {
+
+  cells[parseInt(index)-1].innerHTML = gameBoard.board[index-1]
+ 
+};
 
 // // console.log(gameBoard);
 // // console.log(gameBoard.game());
 
-// render(gameBoard.board);
+
 
 
 [].forEach.call(cells,function(e){e.addEventListener('click',()=>{updateCell(gameBoard)} , false)}) 
-// cells[0].addEventListener('click', updateCell);
+form.addEventListener('submit', createPlayer);
