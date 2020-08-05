@@ -11,30 +11,28 @@ const playerOneSym = 'X';
 const playerTwoSym = 'O';
 const playersArr = [];
 
-// console.log(gameBoard.board);
-// // let gameBoard = (() => {
-// //   let board = ['_', 'O', 'X', 'X', 'X', 'X', 'X', 'X', 'X'];
-// //   return { board };
-// // })();
-
-
-const gameStart = () => {};
-
-const updateCell = (gameBoard) => {
-  const { index } = event.target.dataset;
-  const gameArr = gameBoard;
-  const playerInput = index;
-  console.log(event.target.dataset);
-  gameArr[index - 1] = 'O';
-  render(cells, gameBoard, index);
+const render = (cells, gameBoard, index) => {
+  // eslint-disable-next-line radix
+  cells[parseInt(index) - 1].innerHTML = gameBoard.board[index - 1];
 };
 
+const updateCell = (gameBoard, event, currentPlayer, playerOne, playerTwo) => {
+  const { index } = event.target.dataset;
+  const gameArr = gameBoard.board;
+  console.log(event.target.dataset);
+  console.log(currentPlayer);
+  gameArr[index - 1] = currentPlayer.symbol;
+  render(cells, gameBoard, index);
+  currentPlayer = swapTurns(currentPlayer, playerOne, playerTwo);
+  console.log(currentPlayer);
+};
 
-// const player = (name, symbol) => ({ name, symbol });
+const createPlayer = (name, symbol) => ({ name, symbol });
 
-
-const createPlayer = (name, symbol) => {
-  return { name, symbol };
+const swapTurns = (currentPlayer, playerOne, playerTwo) => {
+  currentPlayer = currentPlayer === playerTwo ? playerOne : playerTwo;
+  return currentPlayer;
+  // console.log(currentPlayer);
 };
 
 const gameFlow = (playersArr) => {
@@ -43,9 +41,19 @@ const gameFlow = (playersArr) => {
   const playerOne = createPlayer(playersArr[0], playerOneSym);
   const playerTwo = createPlayer(playersArr[1], playerTwoSym);
   // alert('Player Two enter your name:');
-  // createPlayer(playerName, 'O');
-  console.log(playerOne);
-  console.log(playerTwo);
+  // console.log(playerOne);
+  // console.log(playerTwo);
+
+  window.currentPlayer = playerOne;
+  // console.log(currentPlayer);
+
+  // console.log(currentPlayer);
+  // currentPlayer = swapTurns(currentPlayer, playerOne, playerTwo);
+  // console.log(currentPlayer);
+  [].forEach.call(cells, (e) => { e.addEventListener('click', (e) => { updateCell(gameBoard, e, window.currentPlayer, playerOne, playerTwo); }, { once: true }); });
+  // const currentTurn = currentPlayer === playerOne ? playerOne.symbol : playerTwo.symbol;
+
+
 
 
   // gameBoard.board.forEach(element => {
@@ -61,15 +69,6 @@ const gameFlow = (playersArr) => {
   //
 };
 
-// gameFlow();
-
-const render = (cells, gameBoard, index) => {
-  cells[parseInt(index) - 1].innerHTML = gameBoard.board[index - 1];
-};
-
-// // console.log(gameBoard);
-// // console.log(gameBoard.game());
-
 const startGame = (e) => {
   e.preventDefault();
   // console.log(playerName.value);
@@ -82,6 +81,15 @@ const startGame = (e) => {
   form.reset();
 };
 
+// const handleClick = (e) => {
 
-[].forEach.call(cells, (e) => { e.addEventListener('click', () => { updateCell(gameBoard); }, false); });
+
+
+//   updateCell(gameBoard, event, currentPlayer);
+// }
+
+
+// [].forEach.call(cells, (e) => { e.addEventListener('click', (e) => { updateCell(gameBoard, e); }, { once: true }); });
+
+
 form.addEventListener('submit', (e) => startGame(e));
