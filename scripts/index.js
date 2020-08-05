@@ -7,89 +7,90 @@ const gameBoard = {
   board: ['', '', '', '', '', '', '', '', ''],
 };
 
+const winCombos = [
+  [0, 1, 2],
+  [3, 4, 5],
+  [6, 7, 8],
+  [0, 3, 6],
+  [1, 4, 7],
+  [2, 5, 8],
+  [0, 4, 8],
+  [2, 4, 6],
+];
+
 const playerOneSym = 'X';
 const playerTwoSym = 'O';
 const playersArr = [];
 
+
 const render = (cells, gameBoard, index) => {
   // eslint-disable-next-line radix
-  cells[parseInt(index) - 1].innerHTML = gameBoard.board[index - 1];
+  cells[parseInt(index) - 1].innerHTML = `<p>${gameBoard.board[index - 1]}</p>`;
 };
 
-const updateCell = (gameBoard, event, currentPlayer, playerOne, playerTwo) => {
+const updateCell = (gameBoard, event, winCombos ) => {
   const { index } = event.target.dataset;
   const gameArr = gameBoard.board;
   console.log(event.target.dataset);
-  console.log(currentPlayer);
-  gameArr[index - 1] = currentPlayer.symbol;
+  const countX = gameArr.filter(element => element == 'X').length;
+  const countO = gameArr.filter(element => element == 'O').length;
+  console.log(countO);
+  const symbol = countX > countO ? 'O' : 'X';
+  gameArr[index - 1] = symbol;
   render(cells, gameBoard, index);
-  currentPlayer = swapTurns(currentPlayer, playerOne, playerTwo);
-  console.log(currentPlayer);
+  console.log(gameArr);
+  checkWin(winCombos, symbol, gameBoard);
+  // console.log(win);
+
 };
 
 const createPlayer = (name, symbol) => ({ name, symbol });
 
-const swapTurns = (currentPlayer, playerOne, playerTwo) => {
-  currentPlayer = currentPlayer === playerTwo ? playerOne : playerTwo;
-  return currentPlayer;
-  // console.log(currentPlayer);
-};
 
 const gameFlow = (playersArr) => {
-  // alert('Player One enter your name:');
   console.log(playersArr);
   const playerOne = createPlayer(playersArr[0], playerOneSym);
   const playerTwo = createPlayer(playersArr[1], playerTwoSym);
-  // alert('Player Two enter your name:');
-  // console.log(playerOne);
-  // console.log(playerTwo);
-
-  window.currentPlayer = playerOne;
-  // console.log(currentPlayer);
-
-  // console.log(currentPlayer);
-  // currentPlayer = swapTurns(currentPlayer, playerOne, playerTwo);
-  // console.log(currentPlayer);
-  [].forEach.call(cells, (e) => { e.addEventListener('click', (e) => { updateCell(gameBoard, e, window.currentPlayer, playerOne, playerTwo); }, { once: true }); });
-  // const currentTurn = currentPlayer === playerOne ? playerOne.symbol : playerTwo.symbol;
-
-
-
-
-  // gameBoard.board.forEach(element => {
-  //   if (element !== '') {
-
-  //   }
-  // });
-
-
-  // players take turn
-  // player input array
-  // wins combos
-  //
+  // [].forEach.call(cells, (e) => { e.addEventListener('click', (e) => { updateCell(gameBoard, e); }, { once: true }); });
 };
 
 const startGame = (e) => {
   e.preventDefault();
-  // console.log(playerName.value);
   playersArr.push(playerName.value);
-  // console.log(playersArr);
-
   if (playersArr.length === 2) {
     gameFlow(playersArr);
   }
   form.reset();
 };
 
-// const handleClick = (e) => {
+// const checkWin = (currentSymbol, cells, winCombos) => {
+//   return winCombos.some(combination => {
+//     console.log(combination);
+//     return combination.every(index => {
+//       console.log(index);
+//       console.log(cells[index]);
+//       return cells[index].contains(p);
+//     });
+//   });
+// };
+
+const checkWin = (winCombos, symbol, gameBoard) => {
+  console.log(winCombos);
+  for (let i = 0; i < winCombos.length; i += 1) {
+    console.log(winCombos[i]);
+    console.log(symbol);
+    const result = winCombos[i].every(elem => { gameBoard.board[elem] == symbol });
+    console.log(result);
+    if (result === true) {
+      return true;
+    }
+  }
+  // console.log(arr);
+  // console.log(arr.every(elem => {elem == symbol}));
+};
 
 
-
-//   updateCell(gameBoard, event, currentPlayer);
-// }
-
-
-// [].forEach.call(cells, (e) => { e.addEventListener('click', (e) => { updateCell(gameBoard, e); }, { once: true }); });
+[].forEach.call(cells, (e) => { e.addEventListener('click', (e) => { updateCell(gameBoard, e, winCombos); }, { once: true }); });
 
 
 form.addEventListener('submit', (e) => startGame(e));
