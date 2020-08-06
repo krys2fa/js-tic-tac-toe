@@ -62,20 +62,11 @@ const switchTurns = () => {
   turn = !turn;
 };
 
-const gameFlow = (gameBoard, event, winCombos, playersObj) => {
-  const { index } = event.target.dataset;
-  // console.log(index);
-  console.log(turn);
-
+const gameFlow = (e) => {
+  const { index } = e.target.dataset;
   const marker = turn ? 'X' : 'O';
-    console.log(marker);
-    // console.log(turn);
-    console.log(gameBoard.board);
-
   gameBoard.board[index - 1] = marker;
   updateCell(cells, gameBoard, index);
-  console.log('after');
-   console.log(gameBoard.board);
   switchTurns();
   const win = checkWin(winCombos, marker, gameBoard);
 
@@ -94,6 +85,12 @@ const gameFlow = (gameBoard, event, winCombos, playersObj) => {
 const startGame = (e) => {
   e.preventDefault();
 
+  if (playerName.value === '') {
+    // eslint-disable-next-line no-alert
+    alert('Please type in a name...');
+    return;
+  }
+
   playersArr.push(playerName.value);
   form.reset();
   message.innerHTML = '<p>Player two, enter name...</p>';
@@ -102,22 +99,17 @@ const startGame = (e) => {
     form.classList.add('hide');
     form.classList.remove('show');
     boardDisplay.classList.remove('hide');
-    [].forEach.call(cells, (e) => {
-      e.addEventListener(
+    cells.forEach((cell) => {
+      cell.removeEventListener(
         'click',
-        (e) => {
-          gameFlow(gameBoard, e, winCombos, playersObj);
-        },
-        { once: true },
+        gameFlow,
       );
+      cell.addEventListener('click', gameFlow, { once: true });
     });
     const playerOne = createPlayer(playersArr[0], playerOneSym);
     const playerTwo = createPlayer(playersArr[1], playerTwoSym);
     playersObj.push(playerOne);
     playersObj.push(playerTwo);
-    // console.log('start game');
-    // console.log(turn);
-    // switchTurns();
   }
 };
 
