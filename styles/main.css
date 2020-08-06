@@ -18,3 +18,12 @@ body {
 .form {
   margin: 20px auto;
 }
+
+.hide {
+  display: none;
+}
+
+.show {
+  display: block;
+}
+
