@@ -3,10 +3,8 @@ import {
 // eslint-disable-next-line import/extensions
 } from './dom.js';
 
-const playerOneSym = 'X';
-const playerTwoSym = 'O';
 let playersArr = [];
-let playersObj = [];
+
 const gameBoard = {
   board: ['', '', '', '', '', '', '', '', ''],
 };
@@ -33,7 +31,10 @@ const drawGame = () => {
 const endGame = (player) => {
   const msg = `${player} has won this game!`;
   message.innerHTML = msg;
-  boardDisplay.classList.add('hide');
+  cells.forEach((cell) => {
+    // eslint-disable-next-line no-use-before-define
+    cell.removeEventListener('click', gameFlow);
+  });
   form.classList.add('hide');
   form.classList.remove('show');
   replayBtn.classList.add('show');
@@ -70,8 +71,8 @@ const gameFlow = (e) => {
   switchTurns();
   const win = checkWin(winCombos, marker, gameBoard);
 
-  const player = playersObj.filter(el => el.symbol === marker)[0].name;
-  const nextPlayer = playersObj.filter((el) => el.symbol !== marker)[0].name;
+  const player = playersArr.filter(el => el.symbol === marker)[0].name;
+  const nextPlayer = playersArr.filter((el) => el.symbol !== marker)[0].name;
 
   if (win) {
     endGame(player);
@@ -106,10 +107,10 @@ const startGame = (e) => {
       );
       cell.addEventListener('click', gameFlow, { once: true });
     });
-    const playerOne = createPlayer(playersArr[0], playerOneSym);
-    const playerTwo = createPlayer(playersArr[1], playerTwoSym);
-    playersObj.push(playerOne);
-    playersObj.push(playerTwo);
+    const playerOne = createPlayer(playersArr[0], 'X');
+    playersArr[0] = playerOne;
+    const playerTwo = createPlayer(playersArr[1], 'O');
+    playersArr[1] = playerTwo;
   }
 };
 
@@ -123,7 +124,6 @@ const restartGame = () => {
   form.classList.add('show');
   message.innerHTML = '<p>Player one, enter name...</p>';
   playersArr = [];
-  playersObj = [];
   turn = true;
 };
 
