@@ -27,6 +27,7 @@ const createPlayer = (name, symbol) => ({ name, symbol });
 const drawGame = () => {
   const msg = 'This game is a draw!';
   message.innerHTML = msg;
+  replayBtn.classList.add('show');
 };
 
 const endGame = (player) => {
@@ -34,6 +35,7 @@ const endGame = (player) => {
   message.innerHTML = msg;
   boardDisplay.classList.add('hide');
   form.classList.add('hide');
+  form.classList.remove('show');
   replayBtn.classList.add('show');
 };
 
@@ -55,14 +57,26 @@ const checkWin = (winCombos, symbol, gameBoard) => {
   return false;
 };
 
+let turn = true;
+const switchTurns = () => {
+  turn = !turn;
+};
+
 const gameFlow = (gameBoard, event, winCombos, playersObj) => {
   const { index } = event.target.dataset;
-  const countX = gameBoard.board.filter((element) => element === 'X').length;
-  const countO = gameBoard.board.filter((element) => element === 'O').length;
-  const marker = countX > countO ? 'O' : 'X';
+  // console.log(index);
+  console.log(turn);
+
+  const marker = turn ? 'X' : 'O';
+    console.log(marker);
+    // console.log(turn);
+    console.log(gameBoard.board);
 
   gameBoard.board[index - 1] = marker;
   updateCell(cells, gameBoard, index);
+  console.log('after');
+   console.log(gameBoard.board);
+  switchTurns();
   const win = checkWin(winCombos, marker, gameBoard);
 
   const player = playersObj.filter(el => el.symbol === marker)[0].name;
@@ -79,12 +93,14 @@ const gameFlow = (gameBoard, event, winCombos, playersObj) => {
 
 const startGame = (e) => {
   e.preventDefault();
+
   playersArr.push(playerName.value);
   form.reset();
   message.innerHTML = '<p>Player two, enter name...</p>';
   if (playersArr.length === 2) {
     message.innerHTML = `<p>${playersArr[0]}, it's your turn...</p>`;
     form.classList.add('hide');
+    form.classList.remove('show');
     boardDisplay.classList.remove('hide');
     [].forEach.call(cells, (e) => {
       e.addEventListener(
@@ -99,6 +115,9 @@ const startGame = (e) => {
     const playerTwo = createPlayer(playersArr[1], playerTwoSym);
     playersObj.push(playerOne);
     playersObj.push(playerTwo);
+    // console.log('start game');
+    // console.log(turn);
+    // switchTurns();
   }
 };
 
@@ -113,6 +132,7 @@ const restartGame = () => {
   message.innerHTML = '<p>Player one, enter name...</p>';
   playersArr = [];
   playersObj = [];
+  turn = true;
 };
 
 form.addEventListener('submit', (e) => startGame(e));
