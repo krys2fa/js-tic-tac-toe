@@ -27,3 +27,7 @@ body {
   display: block;
 }
 
+.grid {
+  display: grid;
+}
+

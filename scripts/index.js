@@ -1,12 +1,12 @@
 import {
-  boardDisplay, cells, playerName, form, message,
+  boardDisplay, cells, playerName, form, message, replayBtn,
 // eslint-disable-next-line import/extensions
 } from './dom.js';
 
 const playerOneSym = 'X';
 const playerTwoSym = 'O';
-const playersArr = [];
-const playersObj = [];
+let playersArr = [];
+let playersObj = [];
 const gameBoard = {
   board: ['', '', '', '', '', '', '', '', ''],
 };
@@ -34,7 +34,7 @@ const endGame = (player) => {
   message.innerHTML = msg;
 };
 
-const render = (cells, gameBoard, index) => {
+const updateCell = (cells, gameBoard, index) => {
   // eslint-disable-next-line radix
   cells[parseInt(index) - 1].innerHTML = `<p>${gameBoard.board[index - 1]}</p>`;
 };
@@ -59,7 +59,7 @@ const gameFlow = (gameBoard, event, winCombos, playersObj) => {
   const countO = gameArr.filter((element) => element === 'O').length;
   const marker = countX > countO ? 'O' : 'X';
   gameArr[index - 1] = marker;
-  render(cells, gameBoard, index);
+  updateCell(cells, gameBoard, index);
   const win = checkWin(winCombos, marker, gameBoard);
 
   const player = playersObj.filter(el => el.symbol === marker)[0].name;
@@ -83,22 +83,58 @@ const startGame = (e) => {
     message.innerHTML = `<p>${playersArr[0]}, it's your turn...</p>`;
     form.classList.add('hide');
     boardDisplay.classList.remove('hide');
+    boardDisplay.classList.add('grid');
     const playerOne = createPlayer(playersArr[0], playerOneSym);
     const playerTwo = createPlayer(playersArr[1], playerTwoSym);
     playersObj.push(playerOne);
     playersObj.push(playerTwo);
   }
+  [].forEach.call(cells, (e) => {
+    e.removeEventListener('click', (e) => {
+      gameFlow(
+        gameBoard,
+        e,
+        winCombos,
+        playersObj,
+      );
+    });
+    e.addEventListener('click', (e) => {
+      gameFlow(
+        gameBoard,
+        e,
+        winCombos,
+        playersObj,
+      );
+    }, { once: true });
+  });
 };
 
-[].forEach.call(cells, (e) => {
-  e.addEventListener('click', (e) => {
-    gameFlow(
-      gameBoard,
-      e,
-      winCombos,
-      playersObj,
-    );
-  }, { once: true });
-});
+const restartGame = (gameBoard) => {
+  console.log('qwerty');
+  replayBtn.classList.remove('hide');
+  gameBoard.board = ['', '', '', '', '', '', '', '', ''];
+  console.log(gameBoard.board);
+  cells.forEach(cell => {
+    cell.innerHTML = `<p></p>`;
+    console.log(cell);
+  });
+  boardDisplay.classList.add('hide');
+  form.classList.add('show');
+  message.innerHTML = '<p>Player one, enter name...</p>';
+  playersArr = [];
+  playersObj = [];
+};
+
+// [].forEach.call(cells, (e) => {
+//   e.addEventListener('click', (e) => {
+//     gameFlow(
+//       gameBoard,
+//       e,
+//       winCombos,
+//       playersObj,
+//     );
+//   }, { once: true });
+// });
 
 form.addEventListener('submit', (e) => startGame(e));
+replayBtn.addEventListener('click', (gameBoard) => restartGame(gameBoard));
