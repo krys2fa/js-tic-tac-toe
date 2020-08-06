@@ -32,6 +32,9 @@ const drawGame = () => {
 const endGame = (player) => {
   const msg = `${player} has won this game!`;
   message.innerHTML = msg;
+  boardDisplay.classList.add('hide');
+  form.classList.add('hide');
+  replayBtn.classList.add('show');
 };
 
 const updateCell = (cells, gameBoard, index) => {
@@ -100,7 +103,7 @@ const startGame = (e) => {
 };
 
 const restartGame = () => {
-  replayBtn.classList.remove('hide');
+  replayBtn.classList.remove('show');
   gameBoard.board = ['', '', '', '', '', '', '', '', ''];
   cells.forEach((cell) => {
     cell.innerHTML = '<p></p>';

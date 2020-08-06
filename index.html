@@ -12,7 +12,12 @@
 
     <main class="container">
       <div class="row">
-        <div>
+
+        <div class="message text-center">
+          <p>Player one, enter name...</p>
+        </div>
+
+        <div class="text-center">
           <form action="" class="form">
             <label for="username">Username</label>
             <input type="text" name="username" id="username" />
@@ -21,9 +26,9 @@
           </form>
         </div>
 
-        <div class="col-lg-4"></div>
+        <!-- <div class="col-lg-4"></div> -->
 
-        <div class="board-display col-lg-4 hide">
+        <div class="board-display hide">
           <div data-index='1' class="cell cell-1"></div>
           <div data-index='2' class="cell cell-2"></div>
           <div data-index='3' class="cell cell-3"></div>
@@ -35,10 +40,10 @@
           <div data-index='9' class="cell cell-9"></div>
         </div>
 
-        <div class="col-lg-4"></div>
+        <!-- <div class="col-lg-4"></div> -->
 
-        <div class="message"><p>Player one, enter name...</p></div>
-        <button class="btn btn-secondary replay-btn">Replay</button>
+        <!-- <div class="message"><p>Player one, enter name...</p></div> -->
+        <div class="btn btn-primary replay-btn hide">Replay</div>
       </div>
     </main>
 
