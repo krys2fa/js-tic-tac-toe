@@ -1,4 +1,4 @@
-# js-tic-tac-toe
+# Tic Tac Toe
 
 This is a Tic Tac Toe game project from [The Odin Curriculum](https://www.theodinproject.com/courses/javascript/lessons/tic-tac-toe-javascript) based on factory functions.
 
@@ -25,6 +25,7 @@ To get a local copy up and running follow these simple example steps.
 
 ### Setup
 - Clone the repository.
+- Run Live Server from VS Code
 
 ## Authors
 
