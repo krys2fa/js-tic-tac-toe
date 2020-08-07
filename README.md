@@ -13,7 +13,7 @@ This is a Tic Tac Toe game project from [The Odin Curriculum](https://www.theodi
 
 ## Live Demo
 
-Click [here](https://raw.githack.com/Phylis05/Library/objects-constructors/index.html) to visit a live version of the web app.
+Click [here](https://raw.githack.com/krys2fa/js-tic-tac-toe/tic-tac-toe/index.html) to visit a live version of the web app.
 
 ## Getting Started
 
