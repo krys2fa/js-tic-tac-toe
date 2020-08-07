@@ -4,7 +4,8 @@ const playerName = document.querySelector('#username');
 const form = document.querySelector('.form');
 const message = document.querySelector('.message');
 const replayBtn = document.querySelector('.replay-btn');
+const image = document.querySelector('.image');
 
 export {
-  boardDisplay, cells, playerName, form, message, replayBtn,
+  boardDisplay, cells, playerName, form, message, replayBtn, image,
 };

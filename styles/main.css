@@ -9,7 +9,9 @@ body {
   background-color: #fff;
   width: 60%;
   margin: 50px auto;
-  height: 90vh;
+  height: 100%;
+  position: relative;
+  padding-bottom: 20px;
 }
 
 .board-display {
@@ -68,4 +70,12 @@ body {
   border: 1px solid #000;
   width: 200px;
   margin: auto;
+}
+
+img {
+  width: 150px;
+  height: 150px;
+
+  /* position: absolute;
+  left: 27%; */
 }

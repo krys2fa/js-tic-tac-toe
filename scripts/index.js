@@ -1,5 +1,5 @@
 import {
-  boardDisplay, cells, playerName, form, message, replayBtn,
+  boardDisplay, cells, playerName, form, message, replayBtn, image,
 // eslint-disable-next-line import/extensions
 } from './dom.js';
 
@@ -27,6 +27,7 @@ const drawGame = () => {
   const msg = 'This game is a draw!';
   message.innerHTML = msg;
   replayBtn.classList.add('show');
+  image.classList.add('hide');
 };
 
 const endGame = (player) => {
@@ -39,6 +40,7 @@ const endGame = (player) => {
   form.classList.add('hide');
   form.classList.remove('show');
   replayBtn.classList.add('show');
+  image.classList.remove('hide');
 };
 
 const updateCell = (cells, gameBoard, index) => {
@@ -125,6 +127,7 @@ const restartGame = () => {
   message.innerHTML = '<p>Player one, enter name:</p>';
   playersArr = [];
   turn = true;
+  image.classList.add('hide');
 };
 
 form.addEventListener('submit', startGame);
