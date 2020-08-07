@@ -79,7 +79,7 @@ const gameFlow = (e) => {
   } else if ((drawCondition) && (win !== true)) {
     drawGame();
   } else {
-    message.innerHTML = `<p>${nextPlayer}, it's your turn...</p>`;
+    message.innerHTML = `<p>${nextPlayer}, it's your turn:</p>`;
   }
 };
 
@@ -88,15 +88,15 @@ const startGame = (e) => {
 
   if (playerName.value === '') {
     // eslint-disable-next-line no-alert
-    alert('Please type in a name...');
+    alert('Please type in a name:');
     return;
   }
 
   playersArr.push(playerName.value);
   form.reset();
-  message.innerHTML = '<p>Player two, enter name...</p>';
+  message.innerHTML = '<p>Player two, enter name:</p>';
   if (playersArr.length === 2) {
-    message.innerHTML = `<p>${playersArr[0]}, it's your turn...</p>`;
+    message.innerHTML = `<p>${playersArr[0]}, it's your turn:</p>`;
     form.classList.add('hide');
     form.classList.remove('show');
     boardDisplay.classList.remove('hide');
@@ -121,8 +121,8 @@ const restartGame = () => {
     cell.innerHTML = '<p></p>';
   });
   boardDisplay.classList.add('hide');
-  form.classList.add('show');
-  message.innerHTML = '<p>Player one, enter name...</p>';
+  form.classList.remove('hide');
+  message.innerHTML = '<p>Player one, enter name:</p>';
   playersArr = [];
   turn = true;
 };

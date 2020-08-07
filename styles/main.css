@@ -2,7 +2,14 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  background-color: whitesmoke;
+  background-color: #c4c0c0;
+}
+
+.row {
+  background-color: #fff;
+  width: 60%;
+  margin: 50px auto;
+  height: 90vh;
 }
 
 .board-display {
@@ -19,6 +26,15 @@ body {
 
 .form {
   margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  text-align: left;
+}
+
+.form label,
+.form input {
+  margin-bottom: 20px;
 }
 
 .hide {
@@ -43,6 +59,7 @@ body {
 .message {
   margin: 20px auto;
   font-size: 40px;
+  color: #286090;
 }
 
 .replay-btn {
