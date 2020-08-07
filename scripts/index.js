@@ -3,6 +3,7 @@ import {
 // eslint-disable-next-line import/extensions
 } from './dom.js';
 
+let turn = true;
 let playersArr = [];
 
 const gameBoard = {
@@ -58,7 +59,6 @@ const checkWin = (winCombos, symbol, gameBoard) => {
   return false;
 };
 
-let turn = true;
 const switchTurns = () => {
   turn = !turn;
 };
@@ -73,10 +73,10 @@ const gameFlow = (e) => {
 
   const player = playersArr.filter(el => el.symbol === marker)[0].name;
   const nextPlayer = playersArr.filter((el) => el.symbol !== marker)[0].name;
-
+  const drawCondition = gameBoard.board.every((ele) => ele !== '');
   if (win) {
     endGame(player);
-  } else if (gameBoard.board.every((ele) => ele !== '') && win !== true) {
+  } else if ((drawCondition) && (win !== true)) {
     drawGame();
   } else {
     message.innerHTML = `<p>${nextPlayer}, it's your turn...</p>`;
@@ -127,5 +127,5 @@ const restartGame = () => {
   turn = true;
 };
 
-form.addEventListener('submit', (e) => startGame(e));
+form.addEventListener('submit', startGame);
 replayBtn.addEventListener('click', restartGame);
