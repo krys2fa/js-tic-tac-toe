@@ -1,4 +1,4 @@
-# js-tic-tac-toe
+# Tic Tac Toe
 
 This is a Tic Tac Toe game project from [The Odin Curriculum](https://www.theodinproject.com/courses/javascript/lessons/tic-tac-toe-javascript) based on factory functions.
 
@@ -13,7 +13,7 @@ This is a Tic Tac Toe game project from [The Odin Curriculum](https://www.theodi
 
 ## Live Demo
 
-Click [here](https://raw.githack.com/Phylis05/Library/objects-constructors/index.html) to visit a live version of the web app.
+Click [here](https://raw.githack.com/krys2fa/js-tic-tac-toe/tic-tac-toe/index.html) to visit a live version of the web app.
 
 ## Getting Started
 
@@ -25,6 +25,7 @@ To get a local copy up and running follow these simple example steps.
 
 ### Setup
 - Clone the repository.
+- Run Live Server from VS Code
 
 ## Authors
 
@@ -44,7 +45,7 @@ To get a local copy up and running follow these simple example steps.
 
 Contributions, issues and feature requests are welcome!
 
-Feel free to check the [issues page](issues/).
+Feel free to check the [issues page](https://github.com/krys2fa/js-tic-tac-toe/issues).
 
 ## Show your support
 
