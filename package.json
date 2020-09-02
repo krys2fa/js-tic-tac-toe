@@ -1,0 +1,41 @@
+{
+  "name": "js-tic-tac-toe",
+  "version": "1.0.0",
+  "description": "This is a Tic Tac Toe game project from [The Odin Curriculum](https://www.theodinproject.com/courses/javascript/lessons/tic-tac-toe-javascript) based on factory functions.",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "dev": "webpack mode --development",
+    "build": "webpack --mode production",
+    "start": "webpack-dev-server --mode development --open",
+    "lint": "npx eslint . --fix && npx stylelint '**/*.{css,scss}' --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/krys2fa/js-tic-tac-toe.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/krys2fa/js-tic-tac-toe/issues"
+  },
+  "homepage": "https://github.com/krys2fa/js-tic-tac-toe#readme",
+  "devDependencies": {
+    "@babel/preset-env": "7.11.5",
+    "css-loader": "^4.2.2",
+    "eslint": "6.8.0",
+    "eslint-config-airbnb-base": "14.1.0",
+    "eslint-plugin-import": "2.20.2",
+    "file-loader": "^6.1.0",
+    "jest": "^26.4.2",
+    "style-loader": "^1.2.1",
+    "stylelint": "13.3.3",
+    "stylelint-config-standard": "20.0.0",
+    "stylelint-csstree-validator": "1.8.0",
+    "stylelint-scss": "3.17.2",
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "3.11.0"
+  }
+}
