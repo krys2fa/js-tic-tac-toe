@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
       integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
-    <link rel="stylesheet" href="styles/main.css">
     <title>Tic Tac Toe</title>
   </head>
   <body>
@@ -20,12 +19,12 @@
         <div class="">
           <form action="" class="form">
             <label for="username">Username</label>
-            <input type="text" name="username" id="username" />
+            <input type="text" name="username" id="username" required/>
 
             <button class="btn btn-primary" type="submit">Save</button>
           </form>
         </div>
-        
+
         <div class="image hide text-center"><img src="" class="congrats-img" alt=""></div>
 
         <div class="board-display hide">
@@ -39,7 +38,7 @@
           <div data-index='8' class="cell cell-8"></div>
           <div data-index='9' class="cell cell-9"></div>
         </div>
-        
+
         <div class="btn btn-primary replay-btn hide">New Game</div>
       </div>
     </main>
