@@ -1,0 +1,31 @@
+{
+  "name": "js-tic-tac-toe",
+  "version": "1.0.0",
+  "description": "This is a Tic Tac Toe game project from [The Odin Curriculum](https://www.theodinproject.com/courses/javascript/lessons/tic-tac-toe-javascript) based on factory functions.",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "dev": "webpack mode --development",
+    "build": "webpack --mode production",
+    "start": "webpack-dev-server --mode development --open",
+    "lint": "npx eslint . --fix && npx stylelint '**/*.{css,scss}'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/krys2fa/js-tic-tac-toe.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/krys2fa/js-tic-tac-toe/issues"
+  },
+  "homepage": "https://github.com/krys2fa/js-tic-tac-toe#readme",
+  "devDependencies": {
+    "css-loader": "^4.2.2",
+    "file-loader": "^6.1.0",
+    "style-loader": "^1.2.1",
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12"
+  }
+}

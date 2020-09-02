@@ -1,5 +1,7 @@
+import './main.css';
+import img from './giphy.gif';
 import {
-  boardDisplay, cells, playerName, form, message, replayBtn, image,
+  boardDisplay, cells, playerName, form, message, replayBtn, image, giphy,
 // eslint-disable-next-line import/extensions
 } from './dom.js';
 
@@ -40,6 +42,7 @@ const endGame = (player) => {
   form.classList.add('hide');
   form.classList.remove('show');
   replayBtn.classList.add('show');
+  giphy.src = img;
   image.classList.remove('hide');
 };
 
