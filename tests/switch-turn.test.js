@@ -1,7 +1,7 @@
-const switchTurns = require('../src/index.js');
+const switchTurns = require('../src/game-logic.js');
 
 test('players switch turns', () => {
   const turn = true;
-  switchTurns();
+  switchTurns(turn);
   expect(turn).toBe(false);
 });

@@ -64,16 +64,16 @@ const checkWin = (winCombos, symbol, gameBoard) => {
   return false;
 };
 
-const switchTurns = () => {
-  turn = !turn;
-};
+// const switchTurns = () => {
+//   turn = !turn;
+// };
 
 const gameFlow = (e) => {
   const { index } = e.target.dataset;
   const marker = turn ? 'X' : 'O';
   gameBoard.board[index - 1] = marker;
   updateCell(cells, gameBoard, index);
-  switchTurns();
+  switchTurns(turn);
   const win = checkWin(winCombos, marker, gameBoard);
 
   const player = playersArr.filter(el => el.symbol === marker)[0].name;
