@@ -1,7 +1,6 @@
 # Tic Tac Toe
 
-This is a Tic Tac Toe game project from [The Odin Curriculum](https://www.theodinproject.com/courses/javascript/lessons/tic-tac-toe-javascript) based on factory functions.
-
+This is a Tic Tac Toe game project from [The Odin Curriculum](https://www.theodinproject.com/courses/javascript/lessons/tic-tac-toe-javascript) based on factory functions. This project also involved writing tests using Jest.
 ## Web App Screenshots
 ![](./images/app_screenshot.png)
 
@@ -22,10 +21,15 @@ To get a local copy up and running follow these simple example steps.
 ### Prerequisites
 
 - npm
+- webpack
+- jest
 
 ### Setup
 - Clone the repository.
-- Run Live Server from VS Code
+- cd into js-tic-tac-toe folder
+- Run `npm install`.
+- Run `npm run test` from your command line.
+- Run `npm run start` to play the game.
 
 ## Authors
 
